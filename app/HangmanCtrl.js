@@ -4,7 +4,7 @@ app.controller('HangularCtrl', function($scope, HangularService){
 	$scope.test = "Hullo";
 	
 	$scope.makeGuess = function() {
-		HangularService.makeGuess($scope.guess);
+		HangularService.updateGameState($scope.guess, $scope.word, $scope.answerArray);
 	};//end $scope.makeGuess
 	
 	
@@ -12,5 +12,7 @@ app.controller('HangularCtrl', function($scope, HangularService){
 	$scope.setupGame = function() {
 		HangularService.setupGame();
 		$scope.answerArray = HangularService.answerArray;
-	}
+		$scope.word = HangularService.word;
+		$scope.remainingLetters = HangularService.remainingLetters;
+	};
 });//end HangularCtrl

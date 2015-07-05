@@ -2,6 +2,7 @@ var app = angular.module('Hangular');
 
 app.service('HangularService', function() {
 	this.makeGuess = function(guess) {
+		console.log('this.makeGuess HIT');
 		return guess;
 	};
 	
@@ -26,6 +27,7 @@ app.service('HangularService', function() {
 	};// end showPlayerProgress;
 	
 	this.updateGameState = function(guess, word, answerArray) {
+		console.log('this.uGS HIT');
 		var count = 0;
 		for(var i = 0; i < word.length; i++) {
 			if(guess === word[i]) {
@@ -33,7 +35,7 @@ app.service('HangularService', function() {
 				count +=1;
 			}
 		}
-		return count;
+		this.remainingLetters - count;
 	};// end updateGameState
 	
 	
@@ -41,9 +43,9 @@ app.service('HangularService', function() {
 	
 	//**Game Loop**
 	this.setupGame = function() {
-		var word = this.pickWord();
-		this.answerArray = this.setupAnswerArray(word);
-		var remainingLetters = word.length;
+		this.word = this.pickWord();
+		this.answerArray = this.setupAnswerArray(this.word);
+		this.remainingLetters = this.word.length;
 	};
 	
 	/*this.playGame = function() {
