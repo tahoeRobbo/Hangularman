@@ -2,4 +2,5 @@
 <div>	{{test}}</div>
 	<div class="answer-array">{{answerArray}}</div>
 	<input class="guess-input" placeholder="make a guess" ng-model="guess" ng-submit="makeGuess()"/>
+	<button ng-click="setupGame()" ng-show="!answerArray">Play a game</button>
 </main>
