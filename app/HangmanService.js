@@ -1,10 +1,8 @@
 var app = angular.module('Hangular');
 
 app.service('HangularService', function() {
-	this.makeGuess = function(guess) {
-		console.log('this.makeGuess HIT');
-		return guess;
-	};
+		/*GAME ESSENTIALS*/
+	this.playAgain = false;
 	
 	this.pickWord = function() {
 		var words = ['entourage', 'wheat', 'three'];
@@ -22,46 +20,27 @@ app.service('HangularService', function() {
 		return answerArray;
 	}; // end setupAnswerArray
 	
-	this.showPlayerProgress = function(answerArray) {
-		return answerArray;
-	};// end showPlayerProgress;
-	
-	this.updateGameState = function(guess, word, answerArray) {
-		console.log('this.uGS HIT');
-		var count = 0;
-		for(var i = 0; i < word.length; i++) {
-			if(guess === word[i]) {
-				answerArray[i] = guess;
-				count +=1;
-			}
-		}
-		this.remainingLetters - count;
-	};// end updateGameState
-	
-	
-
-	
-	//**Game Loop**
+	//GAME STATE CREATION AND GAME EXECUTION//
 	this.setupGame = function() {
 		this.word = this.pickWord();
 		this.answerArray = this.setupAnswerArray(this.word);
 		this.remainingLetters = this.word.length;
-	};
+		this.playAgain = false;
+	};//end setupGame
 	
-	/*this.playGame = function() {
-		//Start Game Loop
-		while(remainingLetters > 0) {
-			this.showPlayerProgress(answerArray);
-			this.makeGuess();
-			if (!guess) {
-				break;
-			} else if (guess.length !== 1) {
-				alert('Only one letter ya poofter');
-			} else {
-				var correctGuesses = this.updateGameState(guess, word, answerArray);
-				remainingLetters -= correctGuesses;
-			}//end if cases
-		}//end while loop -- game loop
-		
-	};//end playGame game -- including game loop*/
-});
+	this.updateGameState = function(guess, word, answerArray) {
+		console.log('this.uGS HIT');
+		for(var i = 0; i < word.length; i++) {
+			if(guess === word[i]) {
+				answerArray[i] = guess;
+				this.remainingLetters -= 1;
+				console.log(this.remainingLetters);
+				if(this.remainingLetters === 0) {
+					this.answerArray = "You got it! The answer was " + this.word + "!!";
+					this.playAgain = true;
+				}// end You Win! section
+			}// end correct guess section
+		}// end for loop
+	};// end updateGameState
+	
+});//end HangularService
