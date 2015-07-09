@@ -1,0 +1,31 @@
+{
+  "name": "hangularman",
+  "version": "1.0.0",
+  "description": "hangman app built using mean",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tahoeRobbo/Hangularman.git"
+  },
+  "keywords": [
+    "hangular",
+    "mongo",
+    "angular",
+    "node",
+    "express"
+  ],
+  "author": "Robert R Hallowell // tahoeRobbo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tahoeRobbo/Hangularman/issues"
+  },
+  "homepage": "https://github.com/tahoeRobbo/Hangularman#readme",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "mongoose": "^4.0.6"
+  }
+}
