@@ -9,4 +9,11 @@
 	
 	<button ng-click="setupGame()" ng-show="!answerArray">Play a game</button>
 	<button ng-click="setupGame()" ng-show="playAgain">Play Again?</button>
+	
+	<form class="add-word" ng-show="!playAgain">
+		<input class="word-input" placeholder="add a word" ng-model="newWord" ng-submit="addWord()"/>
+		<button class="btn word-input-btn" ng-click="addWord()">Add a word</button>
+	</form>
+
+
 </main>

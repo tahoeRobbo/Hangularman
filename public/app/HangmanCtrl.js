@@ -9,12 +9,11 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 	//and put answerArray into the view
 	$scope.setupGame = function() {
 		var dfd = $q.defer();
-		HangularService.pickWord()
+		HangularService.setupGame()
 		.then(function(res) {
 			console.log(res +'from the HangCtrl');
 			dfd.resolve(res);
 			if(res){
-//		HangularService.setupGame();
 		$scope.answerArray = HangularService.answerArray;
 		$scope.word = HangularService.word;
 		$scope.playAgain = HangularService.playAgain;
@@ -34,5 +33,11 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 		$scope.answerArray = HangularService.answerArray;
 		$scope.playAgain = HangularService.playAgain;
 	};//end $scope.makeGuess
+	
+	$scope.addWord = function() {
+		HangularService.addWord($scope.newWord);
+	};
+	
+	
 	
 });//end HangularCtrl

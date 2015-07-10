@@ -4,6 +4,8 @@ app.service('HangularService', function($http, $q) {
 		/*GAME ESSENTIALS*/
 	this.playAgain = false;
 	
+	
+//			**LEGACY** BEFORE MONGO
 /*	this.pickWord = function() {
 		var words = ['entourage', 'wheat', 'three'];
 		console.log('this.pickWord HIT')
@@ -12,7 +14,7 @@ app.service('HangularService', function($http, $q) {
 	
 	this.word;
 	
-	this.pickWord = function() {
+	this.setupGame = function() {
 		var dfd = $q.defer();
 		var that = this;
 		$http({
@@ -31,7 +33,15 @@ app.service('HangularService', function($http, $q) {
 		return dfd.promise;
 	};
 	
-
+	this.addWord = function(word) {
+		$http({
+			method: 'POST',
+			url : 'http://127.0.0.1:9420/api/words',
+			data: {
+				"word" : word
+			}
+		});
+	};
 
 
 	
@@ -68,5 +78,42 @@ app.service('HangularService', function($http, $q) {
 			}// end correct guess section
 		}// end for loop
 	};// end updateGameState
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 });//end HangularService
