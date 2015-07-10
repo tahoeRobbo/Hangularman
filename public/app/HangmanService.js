@@ -97,6 +97,7 @@ app.service('HangularService', function($http, $q) {
 		}// end for loop
 		if(count > 0) { return };
 		return this.remainingGuesses = remGuesses -=1;
+		
 	};// end updateGameState
 	
 
