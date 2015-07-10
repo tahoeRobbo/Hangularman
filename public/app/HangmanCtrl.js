@@ -5,6 +5,7 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 	
 	$scope.test = "Hullo";
 	$scope.wordErr = HangularService.wordErr;
+	$scope.lastGuess = false;
 	
 	//Set up game -- select word, create answer array, toggle buttons
 	//and put answerArray into the view
@@ -36,6 +37,9 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 		$scope.answerArray = HangularService.answerArray;
 		$scope.playAgain = HangularService.playAgain;
 		$scope.remainingGuesses = HangularService.remainingGuesses;
+		if($scope.remainingGuesses === 1){
+			$scope.lastGuess = true;
+		}
 	};//end $scope.makeGuess
 	
 	$scope.addWord = function() {

@@ -75,17 +75,17 @@ app.service('HangularService', function($http, $q) {
 		console.log('this.uGS HIT');
 		var count = 0;
 		var newWord;
+		var splitWord = word.split('');
+		console.log(splitWord);
 		for(var i = 0; i < word.length; i++) {
-			var splitWord = word.split('');
-			console.log(splitWord);
-			if(guess === word[i]) {
+			if(guess === splitWord[i]) {
 				answerArray[i] = guess;
 				splitWord[i] = ' ';
 				this.remainingLetters -= 1;
 				console.log(this.remainingLetters);
+				console.log(splitWord);
 				count +=1;
 				remGuesses += count;
-				newWord = splitWord.join('')
 				if(this.remainingLetters === 0) {
 					this.answerArray = "You got it! The answer was " + this.word + "!!";
 					this.playAgain = true;

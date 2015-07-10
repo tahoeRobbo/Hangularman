@@ -94,3 +94,43 @@ body {
 .answer-array {
 	margin: 0 auto;
 }
+
+
+
+
+/*********REMAINING GUESSES**********/
+
+		/*COLORS*/
+.rg7 {
+	color: #00ff47;
+}
+
+.rg6 {
+	color : #5eff47;
+	font-size: 1.1rem;
+}
+
+.rg5 {
+	color : #b0ff47;
+	font-size: 1.2rem;
+}
+
+.rg4 {
+	color: #ffff47;
+	font-size: 1.4rem;
+}
+
+.rg3 {
+	color: #ffca47;
+	font-size: 1.6rem;
+}
+
+.rg2 {
+	color: #ff5f47;
+	font-size: 1.9rem;
+}
+
+.rg1 {
+	color: #ff0047;
+	font-size: 2.2rem;
+}

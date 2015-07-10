@@ -1,7 +1,8 @@
 <main class="content">
 <div>	{{test}}</div>
 
-	<div class="remaining-guesses"> {{remainingGuesses}} </div>
+	<div class="remaining-guesses" ng-show="answerArray && !lastGuess">You've got <span class="rg{{remainingGuesses}}">{{remainingGuesses}}</span> guesses left!</div>
+	<div class="rg1" ng-show="lastGuess">YOU'VE ONLY GOT 1 GUESS LEFT</div>
 	<div class="answer-array">{{answerArray}}</div>
 	<div class="wordErr" ng-show="wordErr">AY CUH ADD A RILLY RIL WORD DOH</div>
 	
