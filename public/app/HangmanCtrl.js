@@ -31,7 +31,7 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 	//updateGameState - updates answerArray, changes buttons when user 
 	//wins
 	$scope.makeGuess = function() {
-		HangularService.updateGameState($scope.guess, $scope.word, $scope.answerArray);
+		HangularService.updateGameState($scope.guess, $scope.word, $scope.answerArray, $scope.remainingGuesses);
 		$scope.guess = '';
 		$scope.answerArray = HangularService.answerArray;
 		$scope.playAgain = HangularService.playAgain;

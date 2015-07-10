@@ -71,20 +71,24 @@ app.service('HangularService', function($http, $q) {
 //		this.playAgain = false;
 //	};//end setupGame
 	
-	this.updateGameState = function(guess, word, answerArray) {
+	this.updateGameState = function(guess, word, answerArray, remGuesses) {
 		console.log('this.uGS HIT');
 		for(var i = 0; i < word.length; i++) {
 			if(guess === word[i]) {
 				answerArray[i] = guess;
 				this.remainingLetters -= 1;
 				console.log(this.remainingLetters);
+				this.updateGameState(guess);
 				if(this.remainingLetters === 0) {
 					this.answerArray = "You got it! The answer was " + this.word + "!!";
 					this.playAgain = true;
 					
 				}// end You Win! section
+
 			}// end correct guess section
+			
 		}// end for loop
+		return this.remainingGuesses = remGuesses -=1;
 	};// end updateGameState
 	
 
