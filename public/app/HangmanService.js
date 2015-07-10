@@ -13,6 +13,8 @@ app.service('HangularService', function($http, $q) {
 	};//end pickWord*/
 	
 	this.word;
+	this.wordErr;
+	this.remainingGuesses;
 	
 	this.setupGame = function() {
 		var dfd = $q.defer();
@@ -28,12 +30,17 @@ app.service('HangularService', function($http, $q) {
 			that.word = word;
 			that.answerArray = that.setupAnswerArray(that.word);
 			that.remainingLetters = that.word.length;
+			that.remainingGuesses = 7;
 			that.playAgain = false;
 		});
 		return dfd.promise;
 	};
 	
 	this.addWord = function(word) {
+		if((!word) || (word.length <= 2)) {
+		 	this.wordErr = true;
+			return;
+		}
 		$http({
 			method: 'POST',
 			url : 'http://127.0.0.1:9420/api/words',
@@ -74,6 +81,7 @@ app.service('HangularService', function($http, $q) {
 				if(this.remainingLetters === 0) {
 					this.answerArray = "You got it! The answer was " + this.word + "!!";
 					this.playAgain = true;
+					
 				}// end You Win! section
 			}// end correct guess section
 		}// end for loop

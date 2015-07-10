@@ -1,18 +1,26 @@
 <main class="content">
 <div>	{{test}}</div>
+
+	<div class="remaining-guesses"> {{remainingGuesses}} </div>
 	<div class="answer-array">{{answerArray}}</div>
+	<div class="wordErr" ng-show="wordErr">AY CUH ADD A RILLY RIL WORD DOH</div>
 	
-	<form class="guess-form" ng-show="answerArray && !playAgain">
-		<input class="guess-input" placeholder="make a guess" ng-model="guess" ng-submit="makeGuess()"/>
-		<button class="make-guess" ng-click="makeGuess()">Guess a letter</button>
+	
+					<!--ADD A WORD-->
+	<form class="add-word" ng-show="!answerArray">
+		<input class="word-input" placeholder="add a word" ng-model="newWord" ng-submit="addWord()"/>
+		<button class="btn word-input-btn" ng-click="addWord()">Add a word</button>
 	</form>
-	
+
+			
+					<!--Play a game? Play again?-->
 	<button ng-click="setupGame()" ng-show="!answerArray">Play a game</button>
 	<button ng-click="setupGame()" ng-show="playAgain">Play Again?</button>
 	
-	<form class="add-word" ng-show="!playAgain">
-		<input class="word-input" placeholder="add a word" ng-model="newWord" ng-submit="addWord()"/>
-		<button class="btn word-input-btn" ng-click="addWord()">Add a word</button>
+			<!--Make A Guess-->
+	<form class="guess-form" ng-show="answerArray && !playAgain">
+		<input class="guess-input" placeholder="make a guess" ng-model="guess" ng-submit="makeGuess()"/>
+		<button class="make-guess" ng-click="makeGuess()">Guess a letter</button>
 	</form>
 
 

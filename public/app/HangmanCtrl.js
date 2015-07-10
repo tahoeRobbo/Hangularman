@@ -4,6 +4,7 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 
 	
 	$scope.test = "Hullo";
+	$scope.wordErr = HangularService.wordErr;
 	
 	//Set up game -- select word, create answer array, toggle buttons
 	//and put answerArray into the view
@@ -14,10 +15,12 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 			console.log(res +'from the HangCtrl');
 			dfd.resolve(res);
 			if(res){
-		$scope.answerArray = HangularService.answerArray;
-		$scope.word = HangularService.word;
-		$scope.playAgain = HangularService.playAgain;
-				
+				$scope.answerArray = HangularService.answerArray;
+				$scope.word = HangularService.word;
+				$scope.playAgain = HangularService.playAgain;
+				$scope.remainingGuesses = HangularService.remainingGuesses;
+				$scope.wordErr = false;
+				console.log($scope.remainingGuesses, " from Ctrl");
 			}
 		});
 		return dfd.promise;
@@ -32,10 +35,12 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 		$scope.guess = '';
 		$scope.answerArray = HangularService.answerArray;
 		$scope.playAgain = HangularService.playAgain;
+		$scope.remainingGuesses = HangularService.remainingGuesses;
 	};//end $scope.makeGuess
 	
 	$scope.addWord = function() {
 		HangularService.addWord($scope.newWord);
+		$scope.newWord = '';
 	};
 	
 	
