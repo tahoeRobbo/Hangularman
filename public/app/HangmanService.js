@@ -1,17 +1,42 @@
 var app = angular.module('Hangular');
 
-app.service('HangularService', function() {
+app.service('HangularService', function($http, $q) {
 		/*GAME ESSENTIALS*/
 	this.playAgain = false;
 	
-	this.pickWord = function() {
+/*	this.pickWord = function() {
 		var words = ['entourage', 'wheat', 'three'];
 		console.log('this.pickWord HIT')
 		return words[Math.floor(Math.random() * words.length)];
-	};//end pickWord
+	};//end pickWord*/
+	
+	this.word;
+	
+	this.pickWord = function() {
+		var dfd = $q.defer();
+		var that = this;
+		$http({
+			method : 'GET',
+			url : 'http://127.0.0.1:9420/api/words'
+		}).then(function(response){
+			dfd.resolve(response.data);
+			console.log(response.data);
+			var word = response.data[Math.floor(Math.random() * response.data.length)].word;
+			console.log(word);
+			that.word = word;
+			that.answerArray = that.setupAnswerArray(that.word);
+			that.remainingLetters = that.word.length;
+			that.playAgain = false;
+		});
+		return dfd.promise;
+	};
+	
+
+
+
 	
 	this.setupAnswerArray = function(word) {
-		console.log('this.setupAnswerArray HIT')
+		console.log('this.setupAnswerArray HIT');
 		var answerArray = [];
 		for(var i = 0; i < word.length; i++) {
 			answerArray[i] = " _";
@@ -21,12 +46,13 @@ app.service('HangularService', function() {
 	}; // end setupAnswerArray
 	
 	//GAME STATE CREATION AND GAME EXECUTION//
-	this.setupGame = function() {
-		this.word = this.pickWord();
-		this.answerArray = this.setupAnswerArray(this.word);
-		this.remainingLetters = this.word.length;
-		this.playAgain = false;
-	};//end setupGame
+	
+//	this.setupGame = function() {
+//		console.log(this.word);
+//		this.answerArray = this.setupAnswerArray(this.word);
+//		this.remainingLetters = this.word.length;
+//		this.playAgain = false;
+//	};//end setupGame
 	
 	this.updateGameState = function(guess, word, answerArray) {
 		console.log('this.uGS HIT');

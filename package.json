@@ -25,6 +25,7 @@
   "homepage": "https://github.com/tahoeRobbo/Hangularman#readme",
   "dependencies": {
     "body-parser": "^1.13.2",
+    "cors": "^2.7.1",
     "express": "^4.13.1",
     "mongoose": "^4.0.6"
   }

@@ -2,13 +2,16 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Words = require('./api/models/wordsM');
+var cors = require('cors');
 
 mongoose.connect('mongodb://localhost/HangularMan');
 
 var app = express();
 var port = 9420;
 
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', function(req, res) {
 	return res.json({message : "hello world"});
