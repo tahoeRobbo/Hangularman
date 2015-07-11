@@ -43,8 +43,13 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 	};//end $scope.makeGuess
 	
 	$scope.getCategories = function() {
-		HangularService.getCategories();
-	}
+		HangularService.getCategories()
+		.then(function(res){
+			$scope.allCategories = res;
+		});
+		
+
+	};
 	
 	//**ADD TO GAME**
 	

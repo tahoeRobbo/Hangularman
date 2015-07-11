@@ -15,6 +15,7 @@ app.service('HangularService', function($http, $q) {
 	this.word;
 	this.wordErr;
 	this.remainingGuesses;
+	this.categoryArray;
 	
 	this.setupGame = function() {
 		var dfd = $q.defer();
@@ -124,6 +125,12 @@ app.service('HangularService', function($http, $q) {
 		.then(function(allCategories) {
 			dfd.resolve(allCategories.data);
 			console.log(allCategories.data);
+			var categoryArray = [];
+			for(var i = 0; i < allCategories.data.length; i++) {
+				categoryArray.push(allCategories.data[i].category);
+			}
+			console.log(categoryArray);
+			return categoryArray;
 		}); //end .then & dfd.resolve 
 		
 		return dfd.promise;
