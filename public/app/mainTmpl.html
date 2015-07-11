@@ -12,6 +12,12 @@
 		<input class="word-input" placeholder="add a word" ng-model="newWord" ng-submit="addWord()"/>
 		<button class="btn word-input-btn" ng-click="addWord()">Add a word</button>
 	</form>
+			
+					<!--ADD A CATEGORY-->
+	<form class="add-category" ng-show="!answerArray">
+		<input class="category-input" placeholder="add a category" ng-model="newCategory" ng-submit="addCategory()"/>
+		<button class="btn category-input-btn" ng-click="addCategory()">Add a category</button>
+	</form>
 
 			
 					<!--Play a game? Play again?-->

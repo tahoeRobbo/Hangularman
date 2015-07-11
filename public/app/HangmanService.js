@@ -36,21 +36,6 @@ app.service('HangularService', function($http, $q) {
 		return dfd.promise;
 	};
 	
-	this.addWord = function(word) {
-		if((!word) || (word.length <= 2)) {
-		 	this.wordErr = true;
-			return;
-		}
-		$http({
-			method: 'POST',
-			url : 'http://127.0.0.1:9420/api/words',
-			data: {
-				"word" : word
-			}
-		});
-	};
-
-
 	
 	this.setupAnswerArray = function(word) {
 		console.log('this.setupAnswerArray HIT');
@@ -99,7 +84,36 @@ app.service('HangularService', function($http, $q) {
 		return this.remainingGuesses = remGuesses -=1;
 	};// end updateGameState
 	
-
+//*******************API CALLS TO BACKEND *********************\\
+	
+	this.addWord = function(word) {
+		if((!word) || (word.length <= 2)) {
+		 	this.wordErr = true;
+			return;
+		}//makes 
+		$http({
+			method: 'POST',
+			url : 'http://127.0.0.1:9420/api/words',
+			data: {
+				"word" : word
+			}
+		});
+	};//end this.addWord
+	
+	
+	this.addCategory = function(category) {
+		if((!category) || (category.length <= 2)) {
+		 	this.categoryErr = true;
+			return;
+		}//makes 
+		$http({
+			method: 'POST',
+			url : 'http://127.0.0.1:9420/api/category',
+			data: {
+				"category" : category
+			}
+		});
+	};//end this.addCategory
 	
 	
 	

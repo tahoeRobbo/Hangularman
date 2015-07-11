@@ -42,11 +42,19 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 		}
 	};//end $scope.makeGuess
 	
+	
+	//**ADD TO GAME**
+	
 	$scope.addWord = function() {
 		HangularService.addWord($scope.newWord);
 		$scope.newWord = '';
-	};
+	};// end $scope.addWord
 	
+	$scope.addCategory = function() {
+		console.log('addCategory in ctrl HIT');
+		HangularService.addCategory($scope.newCategory);
+		$scope.newCategory = '';
+	};// end $scope.addWord
 	
 	
 });//end HangularCtrl
