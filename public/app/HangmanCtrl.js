@@ -6,12 +6,14 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 	$scope.test = "Hullo";
 	$scope.wordErr = HangularService.wordErr;
 	$scope.lastGuess = false;
-	
+
 	//Set up game -- select word, create answer array, toggle buttons
 	//and put answerArray into the view
 	$scope.setupGame = function() {
 		var dfd = $q.defer();
-		HangularService.setupGame()
+		
+console.log($scope.selectedCategoryObject.category)
+		HangularService.setupGame($scope.selectedCategoryObject.category)
 		.then(function(res) {
 			console.log(res +'from the HangCtrl');
 			dfd.resolve(res);
