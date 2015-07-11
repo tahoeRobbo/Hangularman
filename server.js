@@ -26,6 +26,7 @@ app.get('/api/words', function(req, res) {
 	});
 }); // end get /api/words -- HangularService.getWords
 
+
 //get all categories for select menu in view
 app.get('/api/categories', function(req, res) {
 	Category.find({}).exec()
@@ -59,6 +60,30 @@ app.post('/api/categories', function(req, res) {
 		return res.json(new_category);
 	});
 }); // end post /api/category  -- HangularService.addCategory
+
+app.post('/api/categories:category/words', function(req, res) {
+	Category.findOneAndUpdate(req.params.category, {$push : {words : req.body.word}}, {new : true}, function(err, new_word) {
+		if(err) {
+			return res.status(500).end();
+		}
+		return res.json(new_word);
+	});
+});
+
+/*
+app.post('/api/tracks/:track_id/artists/:artist_id', function(req, res) {
+	Track.findByIdAndUpdate(req.params.track_id, {$push:{artists: req.params.artist_id}}, {new: true}, function(err, new_track) {
+		if (err) {
+			return res.status(500).end();
+		}
+		return res.json(new_track);
+	});
+});
+*/
+
+
+
+
 
 app.post('/api/words', function(req, res) {
 	Words.create({

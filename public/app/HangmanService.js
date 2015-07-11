@@ -17,12 +17,12 @@ app.service('HangularService', function($http, $q) {
 	this.remainingGuesses;
 	this.categoryArray;
 	
-	this.setupGame = function() {
+	this.setupGame = function(category) {
 		var dfd = $q.defer();
 		var that = this;
 		$http({
 			method : 'GET',
-			url : 'http://127.0.0.1:9420/api/words'
+			url : 'http://127.0.0.1:9420/api/' + category + '/words'
 		}).then(function(response){
 			dfd.resolve(response.data);
 			console.log(response.data);
