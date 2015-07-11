@@ -32,7 +32,7 @@ app.service('HangularService', function($http, $q) {
 			that.remainingLetters = that.word.length;
 			that.remainingGuesses = 7;
 			that.playAgain = false;
-		});
+		});//end .then & dfd.resolve functions
 		return dfd.promise;
 	};
 	
@@ -85,7 +85,7 @@ app.service('HangularService', function($http, $q) {
 	};// end updateGameState
 	
 //*******************API CALLS TO BACKEND *********************\\
-	
+	//also a call in this.setupGame
 	this.addWord = function(word) {
 		if((!word) || (word.length <= 2)) {
 		 	this.wordErr = true;
@@ -108,14 +108,26 @@ app.service('HangularService', function($http, $q) {
 		}//makes 
 		$http({
 			method: 'POST',
-			url : 'http://127.0.0.1:9420/api/category',
+			url : 'http://127.0.0.1:9420/api/categories',
 			data: {
 				"category" : category
 			}
 		});
 	};//end this.addCategory
 	
-	
+	this.getCategories = function() {
+		var dfd = $q.defer();
+		$http({
+			mehtod : "GET",
+			url : 'http://127.0.0.1:9420/api/categories'
+		})  //end $http call
+		.then(function(allCategories) {
+			dfd.resolve(allCategories.data);
+			console.log(allCategories.data);
+		}); //end .then & dfd.resolve 
+		
+		return dfd.promise;
+	};//end this.getCategories
 	
 	
 	
