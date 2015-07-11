@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Words = require('./api/models/wordsM');
+var Category = require('./api/models/categoryM');
 var cors = require('cors');
 
 mongoose.connect('mongodb://localhost/HangularMan');
@@ -23,6 +24,18 @@ app.get('/api/words', function(req, res) {
 		res.json(words);
 	});
 }); // end get /api/words -- HangularService.getWords
+
+//ADD NEW CATEGORY/////////////////////////////////////
+app.post('/api/category', function(req, res) {
+	Category.create({
+		category : req.body.category
+	}, function(err, new_category){
+		if(err) {
+			return res.status(500).end();
+		}
+		return res.json(new_category);
+	});
+}); // end post /api/category  -- HangularService.addCategory
 
 app.post('/api/words', function(req, res) {
 	Words.create({
