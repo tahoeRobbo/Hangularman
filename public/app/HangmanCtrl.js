@@ -64,6 +64,7 @@ console.log('XXX ' + $scope.selectedCategoryObject.category);
 		console.log('addCategory in ctrl HIT');
 		HangularService.addCategory($scope.newCategory);
 		$scope.newCategory = '';
+		setTimeout($scope.getCategories, 500);
 	};// end $scope.addWord
 	
 	
