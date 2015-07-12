@@ -39,16 +39,18 @@ app.get('/api/categories', function(req, res) {
 	});
 });//end get /api/category -- HangularService.getCategories
 
-//get specific category -- might fold into get word
-app.get('/api/categories:category', function(req, res) {
-	Category.findOne({ category : req.params.category }).exec()
+/*//get words 
+app.get('/api/categories', function(req, res) {
+	Category.findOne({ category : req.body.category }).exec()
 	.then(function(category) {
+		console.log(category + 'from server')
 		if(!category) {
 			return res.status(404).end();
 		}
+		console.log(category);
 		return res.json(category);
 	});
-});//end get /api/category:categories
+});//end get /api/category:categories */
 
 //ADD NEW CATEGORY/////////////////////////////////////
 app.post('/api/categories', function(req, res) {
@@ -62,6 +64,7 @@ app.post('/api/categories', function(req, res) {
 	});
 }); // end post /api/category  -- HangularService.addCategory
 
+//Add word to specific category
 app.post('/api/categories:category', function(req, res) {
 	Category.findOneAndUpdate(req.params.category, {$push : {words : req.body.word}}, {new : true}, function(err, new_word) {
 		if(err) {
@@ -69,7 +72,7 @@ app.post('/api/categories:category', function(req, res) {
 		}
 		return res.json(new_word);
 	});
-});
+});// end post /api/categories:category
 
 /*
 app.post('/api/tracks/:track_id/artists/:artist_id', function(req, res) {

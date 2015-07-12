@@ -12,7 +12,7 @@ app.controller('HangularCtrl', function($scope, HangularService, $q){
 	$scope.setupGame = function() {
 		var dfd = $q.defer();
 		
-console.log($scope.selectedCategoryObject.category)
+console.log('XXX ' + $scope.selectedCategoryObject.category);
 		HangularService.setupGame($scope.selectedCategoryObject.category)
 		.then(function(res) {
 			console.log(res +'from the HangCtrl');

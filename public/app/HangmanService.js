@@ -22,17 +22,26 @@ app.service('HangularService', function($http, $q) {
 		var that = this;
 		$http({
 			method : 'GET',
-			url : 'http://127.0.0.1:9420/api/categories:' + category
+			url : 'http://127.0.0.1:9420/api/categories'
 		}).then(function(response){
 			dfd.resolve(response.data);
-			console.log(response.data);
-			var word = response.data[Math.floor(Math.random() * response.data.length)].word;
-			console.log(word);
-			that.word = word;
-			that.answerArray = that.setupAnswerArray(that.word);
-			that.remainingLetters = that.word.length;
-			that.remainingGuesses = 7;
-			that.playAgain = false;
+			for(var i = 0; i < response.data.length; i++) {
+				if(response.data[i].category === category) {
+					console.log('responseFromMongoInService' + response.data[i].words);
+					var word = response.data[i].words[Math.floor(Math.random() * response.data[i].words.length)];
+					console.log('this.word is -- ' + word);
+					that.word = word;
+					that.answerArray = that.setupAnswerArray(that.word);
+					that.remainingLetters = that.word.length;
+					that.remainingGuesses = 7;
+					that.playAgain = false;					
+					return;
+					
+				};
+			};
+			
+			
+			
 		});//end .then & dfd.resolve functions
 		return dfd.promise;
 	};
