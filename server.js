@@ -18,13 +18,14 @@ app.get('/', function(req, res) {
 	return res.json({message : "hello world"});
 });
 
-//Get Words
+/*//Get Words
 app.get('/api/words', function(req, res) {
 	Words.find({}).exec()
 	.then(function(words) {
 		res.json(words);
 	});
-}); // end get /api/words -- HangularService.getWords
+}); // end get /api/words -- HangularService.getWords*/
+
 
 
 //get all categories for select menu in view
@@ -61,7 +62,7 @@ app.post('/api/categories', function(req, res) {
 	});
 }); // end post /api/category  -- HangularService.addCategory
 
-app.post('/api/categories:category/words', function(req, res) {
+app.post('/api/categories:category', function(req, res) {
 	Category.findOneAndUpdate(req.params.category, {$push : {words : req.body.word}}, {new : true}, function(err, new_word) {
 		if(err) {
 			return res.status(500).end();

@@ -22,7 +22,7 @@ app.service('HangularService', function($http, $q) {
 		var that = this;
 		$http({
 			method : 'GET',
-			url : 'http://127.0.0.1:9420/api/' + category + '/words'
+			url : 'http://127.0.0.1:9420/api/categories:' + category
 		}).then(function(response){
 			dfd.resolve(response.data);
 			console.log(response.data);
