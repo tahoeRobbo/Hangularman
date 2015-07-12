@@ -56,8 +56,8 @@ console.log('XXX ' + $scope.selectedCategoryObject.category);
 	//**ADD TO GAME**
 	
 	$scope.addWord = function() {
-		HangularService.addWord($scope.newWord);
-		$scope.newWord = '';
+		HangularService.addWord($scope.selectedCategoryObject);
+		$scope.selectedCategoryObject.newWord = '';
 	};// end $scope.addWord
 	
 	$scope.addCategory = function() {

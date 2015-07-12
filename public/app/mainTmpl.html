@@ -9,7 +9,7 @@
 	
 					<!--ADD A WORD-->
 	<form class="add-word" ng-show="!answerArray">
-		<input class="word-input" placeholder="add a word" ng-model="newWord" ng-submit="addWord()"/>
+		<input class="word-input" placeholder="add a word" ng-model="selectedCategoryObject.newWord" ng-submit="addWord()"/>
 		<button class="btn word-input-btn" ng-click="addWord()">Add a word</button>
 	</form>
 			
@@ -32,7 +32,7 @@
 
 		<!--Category select bar-->
 	<div class="category-select" ng-init="getCategories()">
-		<select ng-model="selectedCategoryObject" ng-options="category.category for category in allCategories">
+		<select ng-model="selectedCategoryObject" ng-options="category.category for category in allCategories" ng-show="!answerArray || playAgain">
 			<option value="">Select Category</option>
 		</select>
 	</div>		

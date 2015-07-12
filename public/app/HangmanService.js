@@ -96,16 +96,20 @@ app.service('HangularService', function($http, $q) {
 	
 //*******************API CALLS TO BACKEND *********************\\
 	//also a call in this.setupGame
-	this.addWord = function(word) {
-		if((!word) || (word.length <= 2)) {
+	this.addWord = function(catWordObj) {
+		console.log(catWordObj + ' catWordObj this.addWord');
+		console.log(catWordObj.newWord + ' catWordObj.newWord this.addWord');
+		console.log(catWordObj.category + ' catWordObj.category this.addWord');
+		if((!catWordObj.newWord) || (catWordObj.newWord.length <= 2)) {
 		 	this.wordErr = true;
 			return;
-		}//makes 
+		}//
 		$http({
 			method: 'POST',
-			url : 'http://127.0.0.1:9420/api/words',
+			url : 'http://127.0.0.1:9420/api/categories:category',
 			data: {
-				"word" : word
+				"word" : catWordObj.newWord,
+				"category" : catWordObj.category
 			}
 		});
 	};//end this.addWord

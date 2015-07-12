@@ -66,7 +66,7 @@ app.post('/api/categories', function(req, res) {
 
 //Add word to specific category
 app.post('/api/categories:category', function(req, res) {
-	Category.findOneAndUpdate(req.params.category, {$push : {words : req.body.word}}, {new : true}, function(err, new_word) {
+	Category.findOneAndUpdate({category : req.body.category}, {$push : {words : req.body.word}}, {new : true}, function(err, new_word) {
 		if(err) {
 			return res.status(500).end();
 		}
