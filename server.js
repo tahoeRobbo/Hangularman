@@ -18,16 +18,6 @@ app.get('/', function(req, res) {
 	return res.json({message : "hello world"});
 });
 
-/*//Get Words
-app.get('/api/words', function(req, res) {
-	Words.find({}).exec()
-	.then(function(words) {
-		res.json(words);
-	});
-}); // end get /api/words -- HangularService.getWords*/
-
-
-
 //get all categories for select menu in view
 app.get('/api/categories', function(req, res) {
 	Category.find({}).exec()
@@ -37,20 +27,7 @@ app.get('/api/categories', function(req, res) {
 		}
 		return res.json(allCategories);
 	});
-});//end get /api/category -- HangularService.getCategories
-
-/*//get words 
-app.get('/api/categories', function(req, res) {
-	Category.findOne({ category : req.body.category }).exec()
-	.then(function(category) {
-		console.log(category + 'from server')
-		if(!category) {
-			return res.status(404).end();
-		}
-		console.log(category);
-		return res.json(category);
-	});
-});//end get /api/category:categories */
+});//end get /api/category -- HangularService.getCategories -- HS.setupGame
 
 //ADD NEW CATEGORY/////////////////////////////////////
 app.post('/api/categories', function(req, res) {
@@ -74,21 +51,29 @@ app.post('/api/categories:category', function(req, res) {
 	});
 });// end post /api/categories:category
 
-/*
-app.post('/api/tracks/:track_id/artists/:artist_id', function(req, res) {
-	Track.findByIdAndUpdate(req.params.track_id, {$push:{artists: req.params.artist_id}}, {new: true}, function(err, new_track) {
-		if (err) {
-			return res.status(500).end();
-		}
-		return res.json(new_track);
+
+app.listen(port, console.log('listening on port ' + port));
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////
+///////////CANT USE, LEFT FOR REF/////////////////////
+//////////////////////////////////////////////////////
+
+//ORIGINAL GET WORDS -- LEFT FOR REFERENCE
+/*//Get Words
+app.get('/api/words', function(req, res) {
+	Words.find({}).exec()
+	.then(function(words) {
+		res.json(words);
 	});
-});
-*/
+}); // end get /api/words -- HangularService.getWords*/
 
-
-
-
-
+/*	//ORIGINAL ADD WORD -- LEFT FOR REFERENCE
 app.post('/api/words', function(req, res) {
 	Words.create({
 		word : req.body.word
@@ -98,6 +83,4 @@ app.post('/api/words', function(req, res) {
 		}
 		return res.json(new_word);
 	});
-});// end post api/words -- HangularService.addWord --
-
-app.listen(port, console.log('listening on port ' + port));
+});// end post api/words -- HangularService.addWord -- */ 
