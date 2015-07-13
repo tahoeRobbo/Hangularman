@@ -1,4 +1,4 @@
-<main class="content">
+<main class="content {{styleState}}">
 <div>	{{test}}</div>
 
 	<div class="remaining-guesses" ng-show="answerArray && !lastGuess">You've got <span class="rg{{remainingGuesses}}">{{remainingGuesses}}</span> guesses left!</div>
@@ -6,7 +6,9 @@
 	<div class="answer-array">{{answerArray}}</div>
 	<div class="wordErr" ng-show="wordErr">AY CUH ADD A RILLY RIL WORD DOH</div>
 	
-	
+	<!--IFRAME FOR HANGMAN IMAGES-->
+	<img class="hangman-images" ng-src="/images/{{styleState}}/{{styleState}}{{remainingGuesses}}.jpg" ng-show="styleState" />
+				
 					<!--ADD A WORD-->
 	<form class="add-word" ng-show="!answerArray">
 		<input class="word-input" placeholder="add a word" ng-model="selectedCategoryObject.newWord" ng-submit="addWord()"/>

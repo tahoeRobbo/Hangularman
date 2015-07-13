@@ -3,15 +3,6 @@ var app = angular.module('Hangular');
 app.service('HangularService', function($http, $q) {
 		/*GAME ESSENTIALS*/
 	this.playAgain = false;
-	
-	
-//			**LEGACY** BEFORE MONGO
-/*	this.pickWord = function() {
-		var words = ['entourage', 'wheat', 'three'];
-		console.log('this.pickWord HIT')
-		return words[Math.floor(Math.random() * words.length)];
-	};//end pickWord*/
-	
 	this.word;
 	this.wordErr;
 	this.remainingGuesses;
@@ -35,13 +26,9 @@ app.service('HangularService', function($http, $q) {
 					that.remainingLetters = that.word.length;
 					that.remainingGuesses = 7;
 					that.playAgain = false;					
-					return;
-					
-				};
-			};
-			
-			
-			
+					return;	
+				}
+			}	
 		});//end .then & dfd.resolve functions
 		return dfd.promise;
 	};
@@ -58,18 +45,10 @@ app.service('HangularService', function($http, $q) {
 	}; // end setupAnswerArray
 	
 	//GAME STATE CREATION AND GAME EXECUTION//
-	
-//	this.setupGame = function() {
-//		console.log(this.word);
-//		this.answerArray = this.setupAnswerArray(this.word);
-//		this.remainingLetters = this.word.length;
-//		this.playAgain = false;
-//	};//end setupGame
-	
+		
 	this.updateGameState = function(guess, word, answerArray, remGuesses) {
 		console.log('this.uGS HIT');
 		var count = 0;
-		var newWord;
 		var splitWord = word.split('');
 		console.log(splitWord);
 		for(var i = 0; i < word.length; i++) {
@@ -84,22 +63,16 @@ app.service('HangularService', function($http, $q) {
 				if(this.remainingLetters === 0) {
 					this.answerArray = "You got it! The answer was " + this.word + "!!";
 					this.playAgain = true;
-					
 				}// end You Win! section
-			
 			}// end correct guess section
-			
 		}// end for loop
-		if(count > 0) { return };
-		return this.remainingGuesses = remGuesses -=1;
+		if(count > 0) { return; }
+		return (this.remainingGuesses = remGuesses -=1);
 	};// end updateGameState
 	
 //*******************API CALLS TO BACKEND *********************\\
 	//also a call in this.setupGame
 	this.addWord = function(catWordObj) {
-		console.log(catWordObj + ' catWordObj this.addWord');
-		console.log(catWordObj.newWord + ' catWordObj.newWord this.addWord');
-		console.log(catWordObj.category + ' catWordObj.category this.addWord');
 		if((!catWordObj.newWord) || (catWordObj.newWord.length <= 2)) {
 		 	this.wordErr = true;
 			return;
@@ -148,38 +121,21 @@ app.service('HangularService', function($http, $q) {
 		
 		return dfd.promise;
 	};//end this.getCategories
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 });//end HangularService
+
+
+
+
+
+
+
+
+
+
+//			**LEGACY** BEFORE MONGO
+/*	this.pickWord = function() {
+		var words = ['entourage', 'wheat', 'three'];
+		console.log('this.pickWord HIT')
+		return words[Math.floor(Math.random() * words.length)];
+	};//end pickWord*/

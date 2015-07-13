@@ -95,7 +95,12 @@ body {
 	margin: 0 auto;
 }
 
+/*********HANGMAN IMAGES*************/
 
+.hangman-images {
+	height: 400px;
+	width: 1000px;
+}
 
 
 /*********REMAINING GUESSES**********/
@@ -134,3 +139,55 @@ body {
 	color: #ff0047;
 	font-size: 2.2rem;
 }
+
+/**********CATEGORY BASED STYLES*************/
+
+.content {
+	min-height: 420px;
+}
+
+.snowboarding {
+	background-color: #420247;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
