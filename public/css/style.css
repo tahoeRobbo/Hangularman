@@ -98,8 +98,9 @@ body {
 /*********HANGMAN IMAGES*************/
 
 .hangman-images {
-	height: 400px;
-	width: 1000px;
+	height: 200px;
+	width: 500px;
+	float: right;
 }
 
 
@@ -143,11 +144,23 @@ body {
 /**********CATEGORY BASED STYLES*************/
 
 .content {
-	min-height: 420px;
+	min-height: 800px;
+	
 }
 
 .snowboarding {
-	background-color: #420247;
+background:
+    /* top, transparent black, faked with gradient */ 
+    linear-gradient(
+      rgba(0, 0, 0, 0.7), 
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url(../images/snowboarding/snowboardingGameBG.jpg);
+
+ 
+	min-height: 700px;
+	color: aliceblue;
 }
 
 
