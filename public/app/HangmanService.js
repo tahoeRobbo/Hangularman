@@ -38,7 +38,7 @@ app.service('HangularService', function($http, $q) {
 		console.log('this.setupAnswerArray HIT');
 		var answerArray = [];
 		for(var i = 0; i < word.length; i++) {
-			answerArray[i] = " _";
+			answerArray[i] = "_";
 		}
 		console.log(answerArray);
 		return answerArray;
@@ -58,6 +58,7 @@ app.service('HangularService', function($http, $q) {
 				this.remainingLetters -= 1;
 				console.log(this.remainingLetters);
 				console.log(splitWord);
+				word = splitWord;
 				count +=1;
 				remGuesses += count;
 				if(this.remainingLetters === 0) {

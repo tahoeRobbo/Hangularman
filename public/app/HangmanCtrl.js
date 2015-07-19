@@ -65,7 +65,7 @@ $scope.styleState = $scope.selectedCategoryObject.category;		HangularService.set
 		console.log('addCategory in ctrl HIT');
 		HangularService.addCategory($scope.newCategory);
 		$scope.newCategory = '';
-		setTimeout($scope.getCategories, 500);
+		setTimeout($scope.getCategories, 150);
 	};// end $scope.addWord
 	
 	
