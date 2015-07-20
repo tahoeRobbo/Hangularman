@@ -65,7 +65,12 @@ app.service('HangularService', function($http, $q) {
 					this.answerArray = "You got it! The answer was " + this.word + "!!";
 					this.playAgain = true;
 				}// end You Win! section
+
 			}// end correct guess section
+			if(this.remainingGuesses <= 1) {
+				this.remainingGuesses = remGuesses -=1;
+				return this.answerArray = "Uh oh... the word was " + this.word + "...";
+				}
 		}// end for loop
 		if(count > 0) { return; }
 		return (this.remainingGuesses = remGuesses -=1);
