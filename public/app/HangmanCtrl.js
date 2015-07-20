@@ -24,6 +24,7 @@ $scope.styleState = $scope.selectedCategoryObject.category;		HangularService.set
 				$scope.playAgain = HangularService.playAgain;
 				$scope.remainingGuesses = HangularService.remainingGuesses;
 				$scope.wordErr = false;
+				$scope.lastGuess = false;
 				console.log($scope.remainingGuesses, " from Ctrl");
 			}
 		});
