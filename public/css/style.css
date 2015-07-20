@@ -82,6 +82,7 @@ html {
 	height: 100%;
 	width: 100%;
 	background-color :#97EAFF;
+	font-size : 1.8rem;
 }
 
 body {
@@ -150,6 +151,9 @@ body {
 
 
 .snowboarding {
+	display: flex;
+	flex-direction: column;
+  justify-content: center;
    background:
     /* top, transparent black, faked with gradient */   
     linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
@@ -158,6 +162,7 @@ body {
     url(../images/snowboarding/snowboardingGameBG2.jpg) center center;
 	min-height: 700px;
 	color: aliceblue;
+	margin: 0 auto;
 }
 
 

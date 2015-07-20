@@ -1,6 +1,6 @@
 <main class="content {{styleState}}">
 <h1>HangularMan!</h1>
-
+	<br>
 	<div class="remaining-guesses" ng-show="answerArray && !lastGuess && showInput">You've got <span class="rg{{remainingGuesses}}">{{remainingGuesses}}</span> guesses left!</div>
 	<div class="rg1" ng-show="lastGuess">YOU'VE ONLY GOT 1 GUESS LEFT</div>
 	<div class="answer-array">{{answerArray}}</div>
@@ -24,7 +24,19 @@
 			
 					<!--Play a game? Play again?-->
 	<button ng-click="setupGame()" ng-show="!answerArray">Play a game</button>
-	<button ng-click="setupGame()" ng-show="playAgain">Play Again? </button> <span ng-show="playAgain">or <button ng-click="toggleAddCategory()" ng-show="!playAgainAddCategory"><a ng-href="#/"> create a new game</a></button></span>
+	
+		<div>
+		<button ng-click="setupGame()" ng-show="playAgain">Play Again? </button>
+	</div>
+			<!--Category select bar-->
+	<div class="category-select" ng-init="getCategories()">
+		<select ng-model="selectedCategoryObject" ng-options="category.category for category in allCategories" ng-show="!answerArray || playAgain">
+			<option value="">Select Category</option>
+		</select>
+	</div>		
+
+	 <div ng-show="playAgain && !playAgainAddCategory">or <br>
+	<button ng-click="toggleAddCategory()" ng-show="!playAgainAddCategory"><a ng-href="#/"> create a new game</a></button></div>
 	
 			<!--Make A Guess-->
 	<form class="guess-form" ng-show="answerArray && !playAgain">
@@ -32,12 +44,7 @@
 		<button class="make-guess" ng-click="makeGuess()" ng-show="answerArray || showInput">Guess a letter</button>
 	</form>
 
-		<!--Category select bar-->
-	<div class="category-select" ng-init="getCategories()">
-		<select ng-model="selectedCategoryObject" ng-options="category.category for category in allCategories" ng-show="!answerArray || playAgain">
-			<option value="">Select Category</option>
-		</select>
-	</div>		
+
 		
 
 </main>
